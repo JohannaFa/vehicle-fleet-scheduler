@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DateIntervall, DateIntervallType } from "../types/common";
 import DateIntervalSelector from "./DateIntervalSelector";
+import GanttChart from "./GanttChart";
 
 
 function FleetScheduler() {
@@ -9,6 +10,9 @@ function FleetScheduler() {
         startDate: new Date(),
         endDate: new Date()
       });
+
+      const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
 
       function handleDateIntervallChange(type: DateIntervallType) {
           setSelectedDateInterval({
@@ -24,7 +28,7 @@ function FleetScheduler() {
     <>
 
     <DateIntervalSelector handleDateIntervallChange={handleDateIntervallChange} selectedDateInterval={selectedDateInterval}></DateIntervalSelector>
-
+    <GanttChart selectedDateInterval={selectedDateInterval} date={selectedDate} />
   </>
   )
 }
