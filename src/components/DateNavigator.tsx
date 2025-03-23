@@ -1,9 +1,10 @@
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { DateIntervall} from "../types/common";
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-
-
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
+import { Box, Typography } from "@mui/material";
+import { de } from 'date-fns/locale/de';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 interface DateNavigatorProps {
     selectedDateInterval: DateIntervall;
@@ -31,24 +32,22 @@ interface DateNavigatorProps {
                 setSelectedDate(newSelectedDate)
                 break;
         }
-        
+    }
+
+    function handleCalendarChange(event: any){
+        if(event !== null) setSelectedDate(new Date(event));
     }
 
   return (
-    <div>
-        <button onClick={() => handleDateChange(-1)}>Prev</button>
-        {selectedDate.toLocaleDateString('de-DE', {
-                year: 'numeric',
-                month: 'long',
-                day: '2-digit'
-            })}
-        <button onClick={() => handleDateChange(1)}>LAter</button>
-        
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateCalendar />
+    <div>     
+    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={de}>
+        <button onClick={() => handleDateChange(-1)}><ChevronLeftIcon/></button>
+        <DatePicker value={selectedDate} onChange={handleCalendarChange}/>
+        <button onClick={() => handleDateChange(1)}><ChevronRightIcon/></button>
     </LocalizationProvider>
     </div>
   )
 }
 
 export default DateNavigator
+
