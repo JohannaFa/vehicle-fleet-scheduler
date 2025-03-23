@@ -4,6 +4,7 @@ import { generateGanttDateColumns } from '../utils/ganttChart/columnHelpers';
 import { DateIntervall } from '../types/common';
 import { Vehicle } from '../types/vehicle';
 import { getVehiclesWithBookings } from '../utils/ganttChart/rowHelpers';
+import GanttChartLegend from './GanttChartLegend';
 
 interface GanttChartProps {
     selectedDateInterval: DateIntervall;
@@ -26,7 +27,11 @@ const GanttChart: React.FC<GanttChartProps> = ({selectedDateInterval, date}) => 
   return (
     <>
   <div style={{ height: '100%', width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} />
+      <DataGrid rows={rows} columns={columns} sx={{
+    '& .MuiDataGrid-cell': { padding: '8px 0' }
+  }}/>
+
+    <GanttChartLegend/>
   </div>
 
   </>
