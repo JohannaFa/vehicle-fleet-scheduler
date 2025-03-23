@@ -1,8 +1,8 @@
-import { DateIntervall, DateIntervallType} from "../types/common";
+import { DateIntervallType} from "../types/common";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 interface DateIntervalSelectorProps {
-    selectedDateInterval: DateIntervall;
+    selectedDateInterval: DateIntervallType;
     handleDateIntervallChange: (type: DateIntervallType) => void;
   }
 
@@ -16,7 +16,7 @@ interface DateIntervalSelectorProps {
   <Select
     id="period-simple-selection"
     label="period"
-    value={selectedDateInterval.type}
+    value={selectedDateInterval}
     onChange={(e: any) => handleDateIntervallChange(e.target.value)}
   >
     <MenuItem value={DateIntervallType.DAY}>Tag</MenuItem>
