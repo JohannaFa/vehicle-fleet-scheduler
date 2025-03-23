@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
   padding: 2%;
-  text-align: center;
+  text-align: left;
 
   color-scheme: light dark;
   color: rgba(76, 76, 76, 0.87);
@@ -15,7 +15,7 @@
 }
 
 html{
-  background: linear-gradient(152deg, rgba(4,63,71,1) 0%, rgba(213,202,185,1) 73%, rgba(213,202,185,1) 100%);
+  background-image: url('./assets/background.svg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;

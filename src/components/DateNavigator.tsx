@@ -1,7 +1,7 @@
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { DateIntervall} from "../types/common";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Container, IconButton, Typography } from "@mui/material";
 import { de } from 'date-fns/locale/de';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -39,13 +39,13 @@ interface DateNavigatorProps {
     }
 
   return (
-    <div>     
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>     
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={de}>
-        <button onClick={() => handleDateChange(-1)}><ChevronLeftIcon/></button>
-        <DatePicker value={selectedDate} onChange={handleCalendarChange}/>
-        <button onClick={() => handleDateChange(1)}><ChevronRightIcon/></button>
+        <IconButton onClick={() => handleDateChange(-1)}><ChevronLeftIcon/></IconButton>
+        <IconButton onClick={() => handleDateChange(1)}><ChevronRightIcon/></IconButton>
+        <DatePicker sx={{"& fieldset": {border: 'none', padding: '0px'}}} value={selectedDate} onChange={handleCalendarChange}/>
     </LocalizationProvider>
-    </div>
+    </Box>
   )
 }
 

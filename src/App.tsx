@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <Paper elevation={2}>
-      <Typography variant='h1'>Vehicle Fleet Scheduler</Typography>
+      <Typography variant='h1' align="center">Vehicle Fleet Scheduler</Typography>
 
     <FleetScheduler />
     </Paper>
