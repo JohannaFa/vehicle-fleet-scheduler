@@ -1,28 +1,27 @@
 import { Typography } from '@mui/material';
 import { styled, useThemeProps } from '@mui/material/styles';
 import React from 'react';
-import { BookingStatus } from '../types/booking';
+import { BookingStatus, BookingType } from '../types/booking';
 
-interface BookingProps {
-    variant: string,
-    state: BookingStatus,
+interface BookingBarProps {
+    variant: BookingType,
+    state?: BookingStatus,
     children?: React.ReactNode;
-    //'confirmed' | 'unconfirmed';
 }
 
-const BookingRoot = styled('div', {
-    name: 'Booking',
+const BookingBarRoot = styled('div', {
+    name: 'BookingBar',
     slot: 'root',
-  })<{ props: BookingProps }>(({ props }) => ({
+  })<{ props: BookingBarProps }>(({ props }) => ({
     width: '99%',
     height: '100%',
-    borderRadius: 10,
+    borderRadius: 3,
     paddingLeft: 5,
     display: 'flex',
     alignItems: 'center',
     ...(props.variant === 'customer booking' && {
-      backgroundColor: '#480078',
-      color: 'pink'
+      backgroundColor: '#48007882',
+      color: '#480078'
     }),
     ...(props.variant === 'provisioning' && {
       backgroundColor: '#b26400a6',
@@ -43,16 +42,16 @@ const BookingRoot = styled('div', {
       }),
   }));
 
-export const Booking = React.forwardRef<HTMLDivElement, BookingProps>(function Stat(inProps, ref) {
-  const props = useThemeProps({ props: inProps, name: 'Booking' });
+export const BookingBar = React.forwardRef<HTMLDivElement, BookingBarProps>(function Stat(inProps, ref) {
+  const props = useThemeProps({ props: inProps, name: 'BookingBar' });
   const { variant, children, ...other } = props;
 
   return (
-    <BookingRoot props={props} ref={ref} {...other}>
+    <BookingBarRoot props={props} ref={ref} {...other}>
         <Typography variant="caption">
         {children}      
         </Typography>
          
-    </BookingRoot>
+    </BookingBarRoot>
   );
 });

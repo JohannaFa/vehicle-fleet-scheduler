@@ -1,7 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
 import { DateIntervall } from "../../types/common";
 import { formatDatetoString } from "../formatters";
-import { Booking } from "../../components/Booking";
+import { BookingBar } from "../../components/BookingBar";
 import { BookingStatus, BookingType } from "../../types/booking";
 
 
@@ -49,7 +49,7 @@ export function generateGanttDateColumns(selectedDate: Date, selectedDateInterva
               const cellValue = params.value as { type: BookingType; colspan: number; status: BookingStatus, updatedAt: any }
               if (cellValue?.status) {
                 return (
-                  <Booking variant={cellValue.type} state={cellValue.status}></Booking>
+                  <BookingBar variant={cellValue.type} state={cellValue.status}></BookingBar>
 
                 )
               }
