@@ -2,13 +2,25 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  padding: 2%;
+  text-align: center;
 
   color-scheme: light dark;
   color: rgba(76, 76, 76, 0.87);
-  background-color: #ffffff;
-
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html{
+  background: linear-gradient(152deg, rgba(4,63,71,1) 0%, rgba(213,202,185,1) 73%, rgba(213,202,185,1) 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
