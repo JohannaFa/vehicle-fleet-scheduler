@@ -7,7 +7,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 interface DateNavigatorProps {
     selectedDateInterval: DateIntervall;
-    // handleDateIntervallChange: (type: DateIntervallType) => void;
     selectedDate: Date;
     setSelectedDate: (date: Date) => void;
   }
@@ -45,9 +44,9 @@ interface DateNavigatorProps {
             })}
         <button onClick={() => handleDateChange(1)}>LAter</button>
         
-        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar />
-    </LocalizationProvider> */}
+    </LocalizationProvider>
     </div>
   )
 }

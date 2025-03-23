@@ -1,5 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
-import { DateIntervall } from "../types/common";
+import { DateIntervall } from "../../types/common";
+import { formatDatetoString } from "../formatters";
+
 
 export function generateGanttDateColumns(selectedDate: Date, selectedDateInterval: DateIntervall): GridColDef[] {
     const thisYear = selectedDate.getFullYear();
@@ -36,18 +38,27 @@ export function generateGanttDateColumns(selectedDate: Date, selectedDateInterva
         const dateObject = new Date(thisYear, thisMonth, firstDisplayedDay+dayPointer);
         
         ganttDateColumns.push({
-            field: dateObject.toLocaleDateString('de-DE', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-            }),
-            headerName: dateObject.toLocaleDateString('de-DE', {
-                weekday: 'short',
-                day: '2-digit'
-            }),
+            field: formatDatetoString(dateObject), 
+            headerName: formatDatetoString(dateObject),
             flex: 1,
             minWidth: 100,
-        });
+            renderCell: (params) => {
+              const cellValue = params.value as { value: string; colspan: number; status: string }
+              if (cellValue?.value) {
+                return (
+                  <div className={`${cellValue.value} ${cellValue.status}`} style={{ 
+                    backgroundColor: '#e3f2fd'
+                  }}>
+                    {cellValue.value}
+                  </div>
+                )
+              }
+            },
+            colSpan: (value) => {
+                if (value?.colspan) {
+                  return value?.colspan;
+                }}
+          });
     }
     
     return ganttDateColumns;

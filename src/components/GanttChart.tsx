@@ -1,35 +1,32 @@
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { mockVehicles } from '../mocks/vehicles';
-import { generateGanttDateColumns } from '../utils/columnHelpers';
+import { generateGanttDateColumns } from '../utils/ganttChart/columnHelpers';
 import { DateIntervall } from '../types/common';
+import { Vehicle } from '../types/vehicle';
+import { getVehiclesWithBookings } from '../utils/ganttChart/rowHelpers';
 
 interface GanttChartProps {
     selectedDateInterval: DateIntervall;
     date: Date;
   }
+  
 
 const GanttChart: React.FC<GanttChartProps> = ({selectedDateInterval, date}) => { 
-
   
   const firstColumn: GridColDef = {
-    field: 'model',
+    field: 'vehicle',
     headerName: 'Fahrzeug',
     width: 200,
-    renderCell: (params) => (
-        // replace through component
-      <>
-        <div>{params.row.brand + ' ' + params.row.model}</div>
-      </>
-    ),
   }
   const dateColumns: GridColDef[] = generateGanttDateColumns(date, selectedDateInterval)
-  const columns: GridColDef[] = [firstColumn, ...dateColumns]
+  const columns: GridColDef<Vehicle>[] = [firstColumn, ...dateColumns]
+
+  const rows: any = getVehiclesWithBookings();
 
   return (
     <>
   <div style={{ height: '100%', width: '100%' }}>
-      <DataGrid rows={mockVehicles} columns={columns} />
+      <DataGrid rows={rows} columns={columns} />
   </div>
 
   </>
