@@ -1,15 +1,24 @@
 import './App.css'
 import FleetScheduler from './components/FleetScheduler';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { Paper, ThemeProvider, Typography } from '@mui/material';
+import theme from './theme';
+
+
 
 function App() {
 
   return (
-    <>
-    <h1>Vehicle Fleet Scheduler</h1>
+    <ThemeProvider theme={theme}>
+    <Paper elevation={2}>
+      <Typography variant='h1'>Vehicle Fleet Scheduler</Typography>
 
     <FleetScheduler />
-
-    </>
+    </Paper>
+    </ThemeProvider>
   )
 }
 
