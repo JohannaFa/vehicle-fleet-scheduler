@@ -3,9 +3,3 @@ export enum DateIntervallType {
   WEEK = 'week',
   MONTH = 'month'
 }
-
-export interface DateIntervall {
-  type: DateIntervallType;
-  startDate: Date;
-  endDate: Date;
-}
