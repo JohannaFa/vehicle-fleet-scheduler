@@ -8,9 +8,15 @@ const theme = createTheme({
       light: '#6BA7AF',
       dark: '#043F47',
     },
-    // text: {
-    //     primary: '#043F47',
-    // }
+    text: {
+      primary: '#000000',
+    },
+  },
+  typography: {
+    h1: {
+      fontSize: '3rem',
+      fontWeight: 300,  
+    },
   },
 });
 
