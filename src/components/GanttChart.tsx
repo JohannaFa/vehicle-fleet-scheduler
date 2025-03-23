@@ -1,12 +1,12 @@
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { generateGanttDateColumns } from '../utils/ganttChart/columnHelpers';
-import { DateIntervall } from '../types/common';
+import { DateIntervallType } from '../types/common';
 import { Vehicle } from '../types/vehicle';
 import { getVehiclesWithBookings } from '../utils/ganttChart/rowHelpers';
 
 interface GanttChartProps {
-    selectedDateInterval: DateIntervall;
+    selectedDateInterval: DateIntervallType;
     date: Date;
   }
   
