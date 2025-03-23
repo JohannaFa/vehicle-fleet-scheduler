@@ -1,11 +1,11 @@
 import { GridColDef } from "@mui/x-data-grid";
-import { DateIntervall } from "../../types/common";
+import { DateIntervallType } from "../../types/common";
 import { formatDatetoString } from "../formatters";
 import { BookingBar } from "../../components/BookingBar";
 import { BookingStatus, BookingType } from "../../types/booking";
 
 
-export function generateGanttDateColumns(selectedDate: Date, selectedDateInterval: DateIntervall): GridColDef[] {
+export function generateGanttDateColumns(selectedDate: Date, selectedDateInterval: DateIntervallType): GridColDef[] {
     const thisYear = selectedDate.getFullYear();
     const thisMonth = selectedDate.getMonth();
 
@@ -15,7 +15,7 @@ export function generateGanttDateColumns(selectedDate: Date, selectedDateInterva
     let daystoDisplay = 0;
 
     function calculateDaysToDisplay() {
-        switch (selectedDateInterval.type) {
+        switch (selectedDateInterval) {
             case "week": {
                 const dayOfWeek = selectedDate.getDay(); // sunday = 0, mo - sat: 1 - 6
                 firstDisplayedDay = selectedDate.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1);

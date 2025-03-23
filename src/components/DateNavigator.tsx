@@ -1,13 +1,13 @@
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { DateIntervall} from "../types/common";
+import { DateIntervallType} from "../types/common";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
-import { Box, Button, Container, IconButton, Typography } from "@mui/material";
 import { de } from 'date-fns/locale/de';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { Box, IconButton } from "@mui/material";
 
 interface DateNavigatorProps {
-    selectedDateInterval: DateIntervall;
+    selectedDateInterval: DateIntervallType;
     selectedDate: Date;
     setSelectedDate: (date: Date) => void;
   }
@@ -16,7 +16,7 @@ interface DateNavigatorProps {
 
     function handleDateChange(negative: number){
         const newSelectedDate = new Date(selectedDate);
-        switch (selectedDateInterval.type) {
+        switch (selectedDateInterval) {
             case "week": {
                 newSelectedDate.setDate(newSelectedDate.getDate() + (7*negative));
                 setSelectedDate(newSelectedDate)

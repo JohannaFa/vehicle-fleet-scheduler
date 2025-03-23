@@ -1,8 +1,8 @@
-import { DateIntervall, DateIntervallType} from "../types/common";
-import { ButtonGroup, Button, Box, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { DateIntervallType} from "../types/common";
+import { Box, ToggleButtonGroup, ToggleButton } from '@mui/material';
 
 interface DateIntervalSelectorProps {
-    selectedDateInterval: DateIntervall;
+    selectedDateInterval: DateIntervallType;
     handleDateIntervallChange: (type: DateIntervallType) => void;
   }
 
@@ -14,7 +14,7 @@ interface DateIntervalSelectorProps {
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
   <ToggleButtonGroup
     id="interval-selection"
-    value={selectedDateInterval.type}
+    value={selectedDateInterval}
     onChange={(e: any) => handleDateIntervallChange(e.target.value)}
   >
     <ToggleButton value={DateIntervallType.DAY}>Tag</ToggleButton >
