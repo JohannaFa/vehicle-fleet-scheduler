@@ -1,6 +1,8 @@
 import { GridColDef } from "@mui/x-data-grid";
 import { DateIntervall } from "../../types/common";
 import { formatDatetoString } from "../formatters";
+import { Booking } from "../../components/Booking";
+import { BookingStatus, BookingType } from "../../types/booking";
 
 
 export function generateGanttDateColumns(selectedDate: Date, selectedDateInterval: DateIntervall): GridColDef[] {
@@ -41,16 +43,14 @@ export function generateGanttDateColumns(selectedDate: Date, selectedDateInterva
             field: formatDatetoString(dateObject), 
             headerName: formatDatetoString(dateObject),
             flex: 1,
-            minWidth: 100,
+            align: 'center',
+            minWidth: 130,
             renderCell: (params) => {
-              const cellValue = params.value as { value: string; colspan: number; status: string }
-              if (cellValue?.value) {
+              const cellValue = params.value as { type: BookingType; colspan: number; status: BookingStatus, updatedAt: any }
+              if (cellValue?.status) {
                 return (
-                  <div className={`${cellValue.value} ${cellValue.status}`} style={{ 
-                    backgroundColor: '#e3f2fd'
-                  }}>
-                    {cellValue.value}
-                  </div>
+                  <Booking variant={cellValue.type} state={cellValue.status}></Booking>
+
                 )
               }
             },
