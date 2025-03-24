@@ -29,7 +29,7 @@ function FleetScheduler() {
     elevation={2}
     sx={{
       width: "95%",
-      height: "80%",
+      height: "90%",
       padding: 3,
       overflow: "hidden",
     }}

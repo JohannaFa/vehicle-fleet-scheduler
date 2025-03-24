@@ -5,7 +5,7 @@ import { DateIntervallType } from '../types/common';
 import { Vehicle } from '../types/vehicle';
 import { getVehiclesWithBookings } from '../utils/ganttChart/rowHelpers';
 import GanttChartLegend from './GanttChartLegend';
-import { Box, Tooltip, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 interface GanttChartProps {
     selectedDateInterval: DateIntervallType;
@@ -42,17 +42,15 @@ const GanttChart: React.FC<GanttChartProps> = ({selectedDateInterval, date}) => 
 
   return (
     <>
-  <Box style={{ height: '75%', width: '100%' }}>
       <DataGrid rows={rows} columns={columns} slots={{
           toolbar: GridToolbar,
         }}
         sx={{
+          height: "75%",
     '& .MuiDataGrid-cell': { padding: '8px 8px' },
   }}/>
 
     <GanttChartLegend/>
-  </Box>
-
   </>
   )
 }
