@@ -2,19 +2,25 @@ import { mockVehicles } from '../../mocks/vehicles'
 import { mockBookings } from '../../mocks/bookings'
 import { formatDatetoString } from '../formatters';
 import { differenceInDays } from "date-fns";
+import { Booking } from '../../types/booking';
 
 export const getVehiclesWithBookings = () => {
     return mockVehicles.map(vehicle => ({
         id: vehicle.id,
-        vehicle: `${vehicle.brand} ${vehicle.model} (${vehicle.licensePlate})`,
-        ...mockBookings.reduce((acc, booking) => {
+        vehicle: {
+            brand: vehicle.brand,
+            model: vehicle.model,
+            licensePlate: vehicle.licensePlate,
+          },
+        ...mockBookings.reduce((acc, booking: Booking) => {
             if (booking.vehicleId === vehicle.id) {
                 const bookingColspans = calculateBookingLengthInDays(booking.startDate, booking.endDate)+1;                
                 const columnKeyDate = formatDatetoString(booking.startDate)
                 acc[columnKeyDate] = {
-                  value: booking.bookingType,
+                  type: booking.bookingType,
                   status: booking.status,
                   colspan: bookingColspans,
+                  updatedAt: booking.updatedAt,
                 }
             }
             return acc;

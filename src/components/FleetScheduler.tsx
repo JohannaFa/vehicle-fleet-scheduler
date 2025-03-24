@@ -3,6 +3,7 @@ import { DateIntervallType } from "../types/common";
 import DateIntervalSelector from "./DateIntervalSelector";
 import GanttChart from "./GanttChart";
 import DateNavigator from "./DateNavigator";
+import { Box, Container, Paper, Typography } from "@mui/material";
 
 
 function FleetScheduler() {
@@ -15,12 +16,31 @@ function FleetScheduler() {
 
 
   return (
-    <>
+    <Box
+  sx={{
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center", 
+  }}
+>
+  <Paper
+    elevation={2}
+    sx={{
+      width: "95%",
+      height: "90%",
+      padding: 3,
+      overflow: "hidden",
+    }}
+  >
+      <Typography sx={{ color: "primary.main" }} variant='h1' align="center">Vehicle Fleet Scheduler</Typography>
 
     <DateIntervalSelector handleDateIntervallChange={handleDateIntervallChange} selectedDateInterval={selectedDateInterval}></DateIntervalSelector>
     <DateNavigator selectedDateInterval={selectedDateInterval} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
     <GanttChart selectedDateInterval={selectedDateInterval} date={selectedDate} />
-  </>
+  </Paper>
+  </Box>
   )
 }
 

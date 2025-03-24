@@ -1,6 +1,11 @@
 import { GridColDef } from "@mui/x-data-grid";
 import { DateIntervallType } from "../../types/common";
 import { formatDatetoString } from "../formatters";
+import { BookingBar } from "../../components/BookingBar";
+import { BookingStatus, BookingType } from "../../types/booking";
+import { format } from "date-fns";
+import { de } from "date-fns/locale";
+import { Box, Tooltip, Typography } from "@mui/material";
 
 
 export function generateGanttDateColumns(selectedDate: Date, selectedDateInterval: DateIntervallType): GridColDef[] {
@@ -36,27 +41,43 @@ export function generateGanttDateColumns(selectedDate: Date, selectedDateInterva
     
     for (let dayPointer = 0; dayPointer < daystoDisplay; dayPointer++) {
         const dateObject = new Date(thisYear, thisMonth, firstDisplayedDay+dayPointer);
+        const isEvenColumn = dayPointer % 2 === 1; // mark every second column
+
         
         ganttDateColumns.push({
             field: formatDatetoString(dateObject), 
-            headerName: formatDatetoString(dateObject),
+            headerAlign: "center",
+            headerClassName: isEvenColumn ? "even-column" : "",
+            cellClassName: isEvenColumn ? "even-column" : "",
+            renderHeader: () => (
+              <Box display="flex" flexDirection="column" alignItems="center">
+                <Typography variant="body2" fontWeight="bold" color="primary.dark">
+                  {format(dateObject, "EE", { locale: de })} {/* Mo, Di, ... */}
+                </Typography>
+                <Typography variant="caption" color="primary.main">
+                  {format(dateObject, "d")} {/* 27, 28, ... */}
+                </Typography>
+              </Box>),
             flex: 1,
-            minWidth: 100,
+            align: 'center',
+            sortable: true,
+            hideSortIcons: true,
+            disableColumnMenu: true,
+            minWidth: 50,
             renderCell: (params) => {
-              const cellValue = params.value as { value: string; colspan: number; status: string }
-              if (cellValue?.value) {
+              const cellValue = params.value as { type: BookingType; colspan: number; status: BookingStatus, updatedAt: any }
+              if (cellValue?.status) {
                 return (
-                  <div className={`${cellValue.value} ${cellValue.status}`} style={{ 
-                    backgroundColor: '#e3f2fd'
-                  }}>
-                    {cellValue.value}
-                  </div>
+                  // add handler - onDrag={dragstartHandler}
+                  <Tooltip draggable="true" title={`${cellValue.type} - ${cellValue.status}`} placement="top">
+                  <BookingBar variant={cellValue.type} state={cellValue.status}></BookingBar>
+                  </Tooltip>
                 )
               }
             },
             colSpan: (value) => {
                 if (value?.colspan) {
-                  return value?.colspan;
+                  return value.colspan;
                 }}
           });
     }

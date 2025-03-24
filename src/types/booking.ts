@@ -1,7 +1,7 @@
 export interface Booking {
     id: string;
     vehicleId: string;
-    bookingType: string,
+    bookingType: BookingType,
     startDate: Date;
     endDate: Date;
     status: BookingStatus;
@@ -9,4 +9,6 @@ export interface Booking {
     updatedAt: Date;
   }
 
-export type BookingStatus = 'pending' | 'active' | 'completed' | 'cancelled';
+export type BookingStatus = 'pending' | 'active' | 'completed';
+export type BookingType = 'maintenance' | 'customer booking' | 'provisioning';
+

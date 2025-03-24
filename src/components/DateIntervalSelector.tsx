@@ -1,5 +1,5 @@
 import { DateIntervallType} from "../types/common";
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Box, ToggleButtonGroup, ToggleButton } from '@mui/material';
 
 interface DateIntervalSelectorProps {
     selectedDateInterval: DateIntervallType;
@@ -11,19 +11,17 @@ interface DateIntervalSelectorProps {
   }) => {
 
   return (
-    <FormControl>
-  <InputLabel id="period-selection">Ansicht</InputLabel>
-  <Select
-    id="period-simple-selection"
-    label="period"
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+  <ToggleButtonGroup
+    id="interval-selection"
     value={selectedDateInterval}
     onChange={(e: any) => handleDateIntervallChange(e.target.value)}
   >
-    <MenuItem value={DateIntervallType.DAY}>Tag</MenuItem>
-    <MenuItem value={DateIntervallType.WEEK}>Woche</MenuItem>
-    <MenuItem value={DateIntervallType.MONTH}>Monat</MenuItem>
-  </Select>
-</FormControl>
+    <ToggleButton value={DateIntervallType.DAY}>Tag</ToggleButton >
+    <ToggleButton value={DateIntervallType.WEEK}>Woche</ToggleButton >
+    <ToggleButton value={DateIntervallType.MONTH}>Monat</ToggleButton >
+  </ToggleButtonGroup>
+  </Box>
   )
 }
 
