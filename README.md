@@ -56,6 +56,10 @@ The project includes mock data for vehicles and bookings located in the followin
 - [`src/mocks/vehicles.ts`](src/mocks/vehicles.ts) – contains vehicle mock data  
 - [`src/mocks/bookings.ts`](src/mocks/bookings.ts) – contains bookings mock data   
 
+
+## Documentation
+Further information on design decisions and libraries used can be found in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
