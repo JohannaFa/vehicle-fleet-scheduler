@@ -47,7 +47,8 @@ export const BookingBar = React.forwardRef<HTMLDivElement, BookingBarProps>(func
   const { variant, children, ...other } = props;
 
   return (
-    <BookingBarRoot props={props} ref={ref} {...other}>
+    // add handler - onDrag={dragstartHandler}
+    <BookingBarRoot props={props} ref={ref} {...other} draggable="true">
         <Typography variant="caption">
         {children}      
         </Typography>
