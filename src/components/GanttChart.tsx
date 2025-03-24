@@ -18,7 +18,7 @@ const GanttChart: React.FC<GanttChartProps> = ({selectedDateInterval, date}) => 
   const firstColumn: GridColDef = {
     field: 'vehicle',
     headerName: 'Fahrzeug',
-    width: 200,
+    minWidth: 150,
     renderCell(params) {
       const cellValue = params.value as { brand: string, model: string, licensePlate: string }
         if (cellValue.brand) {

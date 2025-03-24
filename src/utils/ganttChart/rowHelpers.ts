@@ -7,7 +7,11 @@ import { Booking } from '../../types/booking';
 export const getVehiclesWithBookings = () => {
     return mockVehicles.map(vehicle => ({
         id: vehicle.id,
-        vehicle: `${vehicle.brand} ${vehicle.model} (${vehicle.licensePlate})`,
+        vehicle: {
+            brand: vehicle.brand,
+            model: vehicle.model,
+            licensePlate: vehicle.licensePlate,
+          },
         ...mockBookings.reduce((acc, booking: Booking) => {
             if (booking.vehicleId === vehicle.id) {
                 const bookingColspans = calculateBookingLengthInDays(booking.startDate, booking.endDate)+1;                

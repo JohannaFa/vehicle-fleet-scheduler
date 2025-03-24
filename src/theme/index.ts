@@ -15,7 +15,8 @@ const theme = createTheme({
   typography: {
     h1: {
       fontSize: '3rem',
-      fontWeight: 300,  
+      fontWeight: 300,
+      marginBottom: 10,
     },
   },
 });
