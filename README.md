@@ -45,17 +45,16 @@ src/
 
 
 ## Technologies Used
-React Frontend library for building user interfaces.
-TypeScript for type safety.
-Material-UI Component library for styling and theming.
-Vite - fast build tool and development server.
-date-fns utility library for date manipulation.
+- [React](https://react.dev/) Frontend library for building user interfaces with TypeScript for type safety.
+- [Material-UI](https://mui.com/?srsltid=AfmBOoo5frjBEyK85nzRzt2-oGB1VA2lIbjyviwiJYQfmNwV6hCjd4Ad) Component library for styling and theming.
+- [Vite](https://vite.dev/) - fast build tool and development server.
+- [date-fns](https://date-fns.org/) utility library for date manipulation.
 
 ## Mock Data
-The project includes mock data for vehicles and bookings located in:
+The project includes mock data for vehicles and bookings located in the following files:
 
-src/mocks/vehicles.ts
-src/mocks/bookings.ts
+- [`src/mocks/vehicles.ts`](src/mocks/vehicles.ts) – contains vehicle mock data  
+- [`src/mocks/bookings.ts`](src/mocks/bookings.ts) – contains bookings mock data   
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
