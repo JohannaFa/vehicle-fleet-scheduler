@@ -1,11 +1,10 @@
-declare module '@mui/material/styles' {
-    interface PaletteOptions {
+import { PaletteColorOptions } from "@mui/material/styles";
+
+export interface PaletteOptions {
       primary: {
-        main: string;
-        light: string;
-        dark: string;
+        main: PaletteColorOptions;
+        light?: PaletteColorOptions;
+        dark?: PaletteColorOptions;
       };
     }
-    
-    interface Palette extends PaletteOptions {}
-  }
+  
