@@ -33,12 +33,16 @@ src/
 
 
 2. Install dependencies:
-```bash
-npm run dev
+
+   ```bash
+   npm run dev
+
 
 2. Run application:
-```bash
-npm run dev
+
+   ```bash
+   npm run dev
+
 
 ## Technologies Used
 React Frontend library for building user interfaces.
