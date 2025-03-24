@@ -60,12 +60,16 @@ export function generateGanttDateColumns(selectedDate: Date, selectedDateInterva
               </Box>),
             flex: 1,
             align: 'center',
+            sortable: true,
+            hideSortIcons: true,
+            disableColumnMenu: true,
             minWidth: 50,
             renderCell: (params) => {
               const cellValue = params.value as { type: BookingType; colspan: number; status: BookingStatus, updatedAt: any }
               if (cellValue?.status) {
                 return (
-                  <Tooltip title={`${cellValue.type} - ${cellValue.status}`} placement="top">
+                  // add handler - onDrag={dragstartHandler}
+                  <Tooltip draggable="true" title={`${cellValue.type} - ${cellValue.status}`} placement="top">
                   <BookingBar variant={cellValue.type} state={cellValue.status}></BookingBar>
                   </Tooltip>
                 )
