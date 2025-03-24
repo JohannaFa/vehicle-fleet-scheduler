@@ -4,7 +4,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { de } from 'date-fns/locale/de';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Box, IconButton } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 
 interface DateNavigatorProps {
     selectedDateInterval: DateIntervallType;
@@ -39,10 +39,11 @@ interface DateNavigatorProps {
     }
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>     
-    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={de}>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Button onClick={() => setSelectedDate(new Date)} variant="outlined">Heute</Button>   
         <IconButton onClick={() => handleDateChange(-1)}><ChevronLeftIcon/></IconButton>
         <IconButton onClick={() => handleDateChange(1)}><ChevronRightIcon/></IconButton>
+    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={de}>
         <DatePicker sx={{"& fieldset": {border: 'none', padding: '0px'}}} value={selectedDate} onChange={handleCalendarChange}/>
     </LocalizationProvider>
     </Box>
