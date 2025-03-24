@@ -5,6 +5,7 @@ import { DateIntervallType } from '../types/common';
 import { Vehicle } from '../types/vehicle';
 import { getVehiclesWithBookings } from '../utils/ganttChart/rowHelpers';
 import GanttChartLegend from './GanttChartLegend';
+import { Box, Tooltip, Typography } from '@mui/material';
 
 interface GanttChartProps {
     selectedDateInterval: DateIntervallType;
@@ -18,6 +19,21 @@ const GanttChart: React.FC<GanttChartProps> = ({selectedDateInterval, date}) => 
     field: 'vehicle',
     headerName: 'Fahrzeug',
     width: 200,
+    renderCell(params) {
+      const cellValue = params.value as { brand: string, model: string, licensePlate: string }
+        if (cellValue.brand) {
+        return (
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.3 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', gap: 0.3 }}>
+              <Typography variant="caption" fontWeight="bold">{cellValue.brand}</Typography>
+              <Typography variant="caption">{cellValue.model}</Typography>
+            </Box>
+            <Typography variant="caption" color="text.secondary">{cellValue.licensePlate}</Typography>
+          </Box>
+        
+      )
+   }
+    },
   }
   const dateColumns: GridColDef[] = generateGanttDateColumns(date, selectedDateInterval)
   const columns: GridColDef<Vehicle>[] = [firstColumn, ...dateColumns]
@@ -26,13 +42,13 @@ const GanttChart: React.FC<GanttChartProps> = ({selectedDateInterval, date}) => 
 
   return (
     <>
-  <div style={{ height: '100%', width: '100%' }}>
+  <Box style={{ height: '75%', width: '100%' }}>
       <DataGrid rows={rows} columns={columns} sx={{
-    '& .MuiDataGrid-cell': { padding: '8px 0' }
+    '& .MuiDataGrid-cell': { padding: '8px 8px' },
   }}/>
 
     <GanttChartLegend/>
-  </div>
+  </Box>
 
   </>
   )
