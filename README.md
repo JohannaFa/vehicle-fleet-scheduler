@@ -33,14 +33,19 @@ src/
 
 
 2. Install dependencies:
+```bash
+npm run dev
+
+2. Run application:
+```bash
 npm run dev
 
 ## Technologies Used
-React: Frontend library for building user interfaces.
-TypeScript: Strongly typed programming language.
-Material-UI: Component library for styling and theming.
-Vite: Fast build tool and development server.
-date-fns: Utility library for date manipulation.
+React Frontend library for building user interfaces.
+TypeScript for type safety.
+Material-UI Component library for styling and theming.
+Vite - fast build tool and development server.
+date-fns utility library for date manipulation.
 
 ## Mock Data
 The project includes mock data for vehicles and bookings located in:
@@ -50,9 +55,6 @@ src/mocks/bookings.ts
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contributing
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
 
 ## Acknowledgments
 Material-UI for the design components.
