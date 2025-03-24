@@ -1,5 +1,5 @@
 
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import { generateGanttDateColumns } from '../utils/ganttChart/columnHelpers';
 import { DateIntervallType } from '../types/common';
 import { Vehicle } from '../types/vehicle';
@@ -43,7 +43,10 @@ const GanttChart: React.FC<GanttChartProps> = ({selectedDateInterval, date}) => 
   return (
     <>
   <Box style={{ height: '75%', width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} sx={{
+      <DataGrid rows={rows} columns={columns} slots={{
+          toolbar: GridToolbar,
+        }}
+        sx={{
     '& .MuiDataGrid-cell': { padding: '8px 8px' },
   }}/>
 

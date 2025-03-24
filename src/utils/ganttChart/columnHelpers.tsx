@@ -41,9 +41,14 @@ export function generateGanttDateColumns(selectedDate: Date, selectedDateInterva
     
     for (let dayPointer = 0; dayPointer < daystoDisplay; dayPointer++) {
         const dateObject = new Date(thisYear, thisMonth, firstDisplayedDay+dayPointer);
+        const isEvenColumn = dayPointer % 2 === 1; // mark every second column
+
         
         ganttDateColumns.push({
             field: formatDatetoString(dateObject), 
+            headerAlign: "center",
+            headerClassName: isEvenColumn ? "even-column" : "",
+            cellClassName: isEvenColumn ? "even-column" : "",
             renderHeader: () => (
               <Box display="flex" flexDirection="column" alignItems="center">
                 <Typography variant="body2" fontWeight="bold" color="primary.dark">
@@ -68,7 +73,7 @@ export function generateGanttDateColumns(selectedDate: Date, selectedDateInterva
             },
             colSpan: (value) => {
                 if (value?.colspan) {
-                  return value?.colspan;
+                  return value.colspan;
                 }}
           });
     }
